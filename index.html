@@ -6,14 +6,18 @@
   <title>Summer Rudolph | Business Analyst Portfolio</title>
   <style>
     :root {
-      --bg: #f8f4ef;
-      --surface: #fffdfb;
-      --text: #2c2624;
-      --muted: #6f6460;
-      --accent: #7d5a6b;
-      --accent-soft: #eadde3;
-      --border: #e7ddd6;
-      --shadow: 0 10px 30px rgba(44, 38, 36, 0.08);
+      --bg: #f7f3ee;
+      --surface: rgba(255, 255, 255, 0.78);
+      --surface-solid: #fffdfb;
+      --text: #2b2523;
+      --muted: #6e6460;
+      --accent: #7b5c6e;
+      --accent-dark: #5e4352;
+      --line: #e8ddd5;
+      --soft: #efe5e8;
+      --shadow: 0 18px 40px rgba(43, 37, 35, 0.08);
+      --radius: 26px;
+      --max-width: 1150px;
     }
 
     * {
@@ -26,14 +30,22 @@
 
     body {
       margin: 0;
-      font-family: Georgia, "Times New Roman", serif;
-      background: linear-gradient(to bottom, #f7f2ed 0%, #fbf8f5 100%);
+      font-family: "Georgia", "Times New Roman", serif;
       color: var(--text);
-      line-height: 1.6;
+      background:
+        radial-gradient(circle at top left, #f1e7ea 0%, transparent 30%),
+        radial-gradient(circle at top right, #f4ede7 0%, transparent 25%),
+        linear-gradient(180deg, #f8f4ef 0%, #fbf8f5 100%);
+      line-height: 1.65;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     a {
-      color: var(--accent);
+      color: var(--accent-dark);
       text-decoration: none;
     }
 
@@ -42,31 +54,31 @@
     }
 
     .container {
-      width: min(1100px, 92%);
+      width: min(var(--max-width), 92%);
       margin: 0 auto;
     }
 
     header {
-      padding: 28px 0;
-      border-bottom: 1px solid rgba(125, 90, 107, 0.12);
-      background: rgba(248, 244, 239, 0.92);
-      backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+      background: rgba(248, 244, 239, 0.78);
+      border-bottom: 1px solid rgba(123, 92, 110, 0.10);
     }
 
     .nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 18px 0;
       gap: 20px;
       flex-wrap: wrap;
     }
 
-    .brand {
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
+    .logo {
+      font-size: 1rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       font-weight: bold;
     }
@@ -78,134 +90,214 @@
       font-size: 0.96rem;
     }
 
+    .nav-links a {
+      padding: 8px 0;
+    }
+
     .hero {
-      padding: 80px 0 50px;
+      padding: 88px 0 54px;
     }
 
     .hero-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
-      align-items: center;
+      gap: 34px;
+      align-items: stretch;
+    }
+
+    .hero-left,
+    .hero-right,
+    .about-card,
+    .project-card,
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid rgba(232, 221, 213, 0.9);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .hero-left {
+      padding: 52px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left::after {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(123, 92, 110, 0.08);
+      top: -70px;
+      right: -60px;
     }
 
     .eyebrow {
       display: inline-block;
-      padding: 8px 14px;
-      background: var(--accent-soft);
-      color: var(--accent);
+      padding: 9px 16px;
       border-radius: 999px;
+      background: var(--soft);
+      color: var(--accent-dark);
       font-size: 0.9rem;
-      margin-bottom: 18px;
       letter-spacing: 0.04em;
+      margin-bottom: 22px;
     }
 
     h1, h2, h3 {
       margin-top: 0;
-      line-height: 1.2;
+      line-height: 1.18;
     }
 
     h1 {
-      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
       margin-bottom: 18px;
+      max-width: 700px;
     }
 
-    .hero p {
+    .hero-copy {
       font-size: 1.08rem;
       color: var(--muted);
-      max-width: 680px;
+      max-width: 700px;
+      margin-bottom: 28px;
     }
 
     .hero-actions {
-      margin-top: 28px;
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 10px;
     }
 
-    .button {
+    .btn {
       display: inline-block;
-      padding: 12px 20px;
+      padding: 13px 22px;
       border-radius: 999px;
-      border: 1px solid var(--accent);
-      background: var(--accent);
-      color: white;
       font-size: 0.96rem;
       transition: 0.25s ease;
+      border: 1px solid var(--accent);
     }
 
-    .button:hover {
-      opacity: 0.92;
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn.primary:hover {
+      background: var(--accent-dark);
       text-decoration: none;
     }
 
-    .button.secondary {
+    .btn.secondary {
       background: transparent;
-      color: var(--accent);
+      color: var(--accent-dark);
     }
 
-    .hero-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: var(--shadow);
+    .btn.secondary:hover {
+      background: rgba(123, 92, 110, 0.06);
+      text-decoration: none;
     }
 
-    .skills-list {
+    .hero-right {
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .mini-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .skill-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 18px;
     }
 
     .skill-pill {
-      background: #f3ece7;
-      color: #4a403c;
       padding: 10px 14px;
       border-radius: 999px;
+      background: #f4ece7;
+      border: 1px solid #ebddd4;
+      color: #4b403b;
       font-size: 0.92rem;
-      border: 1px solid #eadfd7;
     }
 
     section {
-      padding: 38px 0;
+      padding: 28px 0 36px;
     }
 
-    .section-title {
+    .section-header {
+      margin-bottom: 22px;
+    }
+
+    .section-header h2 {
       font-size: 2rem;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
-    .section-intro {
+    .section-header p {
+      margin: 0;
       color: var(--muted);
       max-width: 760px;
-      margin-bottom: 26px;
     }
 
     .about-card {
       display: grid;
       grid-template-columns: 320px 1fr;
       gap: 32px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 28px;
       padding: 30px;
-      box-shadow: var(--shadow);
       align-items: center;
     }
 
-    .about-card img {
-      width: 100%;
-      border-radius: 24px;
-      display: block;
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-photo-wrap img {
+      border-radius: 22px;
+      border: 1px solid var(--line);
       object-fit: cover;
-      border: 1px solid var(--border);
+      width: 100%;
+      height: 100%;
+    }
+
+    .photo-badge {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      background: rgba(255, 253, 251, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      color: var(--accent-dark);
+      box-shadow: 0 8px 18px rgba(43, 37, 35, 0.08);
     }
 
     .about-text p {
       color: var(--muted);
       margin-bottom: 16px;
+    }
+
+    .about-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .highlight {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--accent-dark);
+      font-size: 0.92rem;
     }
 
     .projects-grid {
@@ -215,69 +307,104 @@
     }
 
     .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-      min-height: 240px;
+      padding: 26px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-height: 280px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .project-tag {
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, var(--accent), #b08aa0);
+    }
+
+    .project-label {
       display: inline-block;
-      width: fit-content;
+      margin-bottom: 18px;
       padding: 7px 12px;
       border-radius: 999px;
-      background: #f3ece7;
-      color: var(--accent);
-      font-size: 0.88rem;
-      margin-bottom: 16px;
+      background: #f5ecef;
+      color: var(--accent-dark);
+      font-size: 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    .project-card p {
+      color: var(--muted);
     }
 
     .coming-soon {
+      margin-top: 20px;
       font-weight: bold;
-      letter-spacing: 0.03em;
-      color: var(--accent);
-      margin-top: 18px;
+      color: var(--accent-dark);
+      letter-spacing: 0.05em;
     }
 
     .contact-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 28px;
-      box-shadow: var(--shadow);
+      padding: 30px;
     }
 
-    .contact-list {
+    .contact-grid {
       display: grid;
-      gap: 14px;
-      font-size: 1rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .contact-item {
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.58);
+      border: 1px solid var(--line);
+    }
+
+    .contact-item strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
     }
 
     footer {
-      padding: 30px 0 50px;
-      color: var(--muted);
+      padding: 26px 0 50px;
       text-align: center;
+      color: var(--muted);
       font-size: 0.94rem;
     }
 
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       .hero-grid,
       .about-card,
-      .projects-grid {
+      .projects-grid,
+      .contact-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero {
-        padding-top: 50px;
+      .hero-left,
+      .hero-right,
+      .about-card,
+      .project-card,
+      .contact-card {
+        padding-left: 22px;
+        padding-right: 22px;
       }
 
-      .about-card {
-        padding: 22px;
+      .hero {
+        padding-top: 56px;
+      }
+
+      .hero-left {
+        padding-top: 34px;
+        padding-bottom: 34px;
       }
     }
   </style>
@@ -285,7 +412,7 @@
 <body>
   <header>
     <div class="container nav">
-      <div class="brand">Summer Rudolph</div>
+      <div class="logo">Summer Rudolph</div>
       <nav class="nav-links">
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
@@ -298,32 +425,30 @@
   <main>
     <section class="hero">
       <div class="container hero-grid">
-        <div>
+        <div class="hero-left">
           <div class="eyebrow">Business Analyst | Data Analytics Candidate</div>
-          <h1>Turning business questions into clear, actionable insights.</h1>
-          <p>
-            Welcome to my portfolio. I am Summer Rudolph, an emerging analytics professional
-            with a growing foundation in business analysis, data interpretation, reporting,
-            and problem-solving. My goal is to build a career where I can support smarter
-            decisions, improve operational performance, and contribute meaningful value through data.
+          <h1>Business-minded analytics with the discipline to turn insight into action.</h1>
+          <p class="hero-copy">
+            I’m Summer Rudolph, an emerging analytics professional building a career at the intersection
+            of business, operations, and data. My portfolio reflects a growing foundation in analytical
+            thinking, reporting, process improvement, and decision support.
           </p>
-          <p>
-            I am especially interested in opportunities within business analysis, pricing analysis,
-            financial analysis, and cost analysis, where strong business judgment and analytical thinking
-            can directly influence strategy and results.
+          <p class="hero-copy">
+            I am pursuing opportunities where I can contribute as a business analyst, pricing analyst,
+            financial analyst, or cost analyst while continuing to grow into a future leader known for
+            clarity, strategy, and results.
           </p>
           <div class="hero-actions">
-            <a class="button" href="#projects">View Projects</a>
-            <a class="button secondary" href="#contact">Contact Me</a>
+            <a class="btn primary" href="#projects">Explore Projects</a>
+            <a class="btn secondary" href="#contact">Connect With Me</a>
           </div>
         </div>
 
-        <aside class="hero-card">
-          <h3>Core Skills</h3>
-          <div class="skills-list">
+        <aside class="hero-right">
+          <div class="mini-title">Skills & Strengths</div>
+          <div class="skill-grid">
             <span class="skill-pill">Excel</span>
             <span class="skill-pill">SQL</span>
-            <span class="skill-pill">Data Analysis</span>
             <span class="skill-pill">Business Analysis</span>
             <span class="skill-pill">Financial Analysis</span>
             <span class="skill-pill">Cost Analysis</span>
@@ -332,6 +457,7 @@
             <span class="skill-pill">Reporting</span>
             <span class="skill-pill">KPI Tracking</span>
             <span class="skill-pill">Process Improvement</span>
+            <span class="skill-pill">Data Interpretation</span>
             <span class="skill-pill">Data Visualization</span>
           </div>
         </aside>
@@ -340,34 +466,44 @@
 
     <section id="about">
       <div class="container">
-        <h2 class="section-title">About Me</h2>
-        <p class="section-intro">
-          I bring a business-minded perspective to analytics and a strong interest in using data
-          to improve operations, identify opportunities, and support better decision-making.
-        </p>
+        <div class="section-header">
+          <h2>About Me</h2>
+          <p>
+            I bring an analytical mindset, an operational lens, and a strong commitment to producing work
+            that supports better business decisions.
+          </p>
+        </div>
 
         <div class="about-card">
-          <div>
+          <div class="about-photo-wrap">
             <img src="headshot.jpg" alt="Professional headshot of Summer Rudolph" />
+            <div class="photo-badge">Analytical. Strategic. Growth-Oriented.</div>
           </div>
 
           <div class="about-text">
             <p>
-              I am a business analyst candidate with a growing technical toolkit and a professional
-              focus on turning information into insight. As I continue building my portfolio, I am
-              developing skills that support roles in business analysis, pricing analysis, financial
-              analysis, and cost analysis.
+              I am building my portfolio as a business analyst candidate with a professional interest in
+              understanding how data can improve performance, strengthen decisions, and uncover opportunities
+              for growth. My work is grounded in the belief that strong analysis should not just explain what
+              happened, but help shape what happens next.
             </p>
             <p>
-              What sets me apart is my ability to connect numbers to real business needs. I am drawn
-              to work that requires critical thinking, operational awareness, and the ability to uncover
-              what the data is really saying. My long-term goal is to become a trusted analytical leader
-              who helps organizations make confident, informed decisions.
+              I am especially drawn to roles that require business acumen, operational awareness, and a clear
+              understanding of how numbers connect to outcomes. As I continue developing technical depth in Excel
+              and SQL, I am also strengthening the communication and problem-solving skills needed to create value
+              across teams and functions.
             </p>
             <p>
-              This portfolio will continue to grow as I add projects that reflect my technical development,
-              analytical thinking, and commitment to delivering business value.
+              My long-term goal is to become a trusted analytical leader who can bridge data and strategy with
+              confidence, precision, and professionalism.
             </p>
+
+            <div class="about-highlights">
+              <span class="highlight">Business Insight</span>
+              <span class="highlight">Operational Thinking</span>
+              <span class="highlight">Strategic Growth</span>
+              <span class="highlight">Decision Support</span>
+            </div>
           </div>
         </div>
       </div>
@@ -375,20 +511,22 @@
 
     <section id="projects">
       <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <p class="section-intro">
-          These featured project spaces represent the foundation of my portfolio and the direction of my
-          analytical work. Full project details will be added soon.
-        </p>
+        <div class="section-header">
+          <h2>Featured Projects</h2>
+          <p>
+            These portfolio placeholders represent the next phase of my technical and analytical development.
+            Full project details will be added as they are completed.
+          </p>
+        </div>
 
         <div class="projects-grid">
           <article class="project-card">
             <div>
-              <div class="project-tag">Project Placeholder</div>
+              <span class="project-label">Data Querying & Analysis</span>
               <h3>SQL Project</h3>
               <p>
-                A future project focused on querying, cleaning, and analyzing data to uncover meaningful
-                business insights and support data-driven decision-making.
+                A future project focused on extracting, organizing, and analyzing structured data to answer
+                business questions, identify trends, and support smarter decisions.
               </p>
             </div>
             <div class="coming-soon">Coming Soon</div>
@@ -396,11 +534,11 @@
 
           <article class="project-card">
             <div>
-              <div class="project-tag">Project Placeholder</div>
+              <span class="project-label">End-to-End Problem Solving</span>
               <h3>Capstone Project</h3>
               <p>
-                A future portfolio feature that will highlight my end-to-end approach to analysis,
-                problem-solving, and communicating findings in a clear, professional format.
+                A future capstone that will showcase my ability to approach a business problem, analyze relevant
+                information, and present findings in a way that is clear, practical, and decision-ready.
               </p>
             </div>
             <div class="coming-soon">Coming Soon</div>
@@ -408,11 +546,11 @@
 
           <article class="project-card">
             <div>
-              <div class="project-tag">Project Placeholder</div>
+              <span class="project-label">Spreadsheet Reporting</span>
               <h3>Excel Project</h3>
               <p>
-                A future project centered on spreadsheet analysis, trend identification, reporting,
-                and business-focused interpretation using Excel tools and functions.
+                A future project centered on organizing data, building useful analysis, and translating spreadsheet
+                findings into business-focused insight using Excel tools and functions.
               </p>
             </div>
             <div class="coming-soon">Coming Soon</div>
@@ -423,16 +561,33 @@
 
     <section id="contact">
       <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <p class="section-intro">
-          I welcome opportunities to connect regarding business analysis, analytics, and future roles.
-        </p>
+        <div class="section-header">
+          <h2>Contact</h2>
+          <p>
+            I welcome opportunities to connect around analytics, business-facing roles, and future career opportunities.
+          </p>
+        </div>
 
         <div class="contact-card">
-          <div class="contact-list">
-            <div><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/summerrudolphtheanalyst" target="_blank">linkedin.com/in/summerrudolphtheanalyst</a></div>
-            <div><strong>Email:</strong> <a href="mailto:summerrudolph7@gmail.com">summerrudolph7@gmail.com</a></div>
-            <div><strong>GitHub:</strong> <a href="https://github.com/summerrudolphtheanalyst" target="_blank">github.com/summerrudolphtheanalyst</a></div>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <strong>LinkedIn</strong>
+              <a href="https://linkedin.com/in/summerrudolphtheanalyst" target="_blank">
+                linkedin.com/in/summerrudolphtheanalyst
+              </a>
+            </div>
+
+            <div class="contact-item">
+              <strong>Email</strong>
+              <a href="mailto:summerrudolph7@gmail.com">summerrudolph7@gmail.com</a>
+            </div>
+
+            <div class="contact-item">
+              <strong>GitHub</strong>
+              <a href="https://github.com/summerrudolphtheanalyst" target="_blank">
+                github.com/summerrudolphtheanalyst
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -441,8 +596,9 @@
 
   <footer>
     <div class="container">
-      © 2026 Summer Rudolph. Built with intention, growth, and a commitment to excellence.
+      © 2026 Summer Rudolph. Designed to reflect growth, capability, and leadership potential.
     </div>
   </footer>
 </body>
 </html>
+
